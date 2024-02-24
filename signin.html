@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}ShopKart-SignIn{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="w-25 mt-3 bg-body-tertiary shadow mx-auto p-3 rounded-3">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2 style="text-align: center;">Sign In</h2>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" name="uname" class="form-control" placeholder="Enter registered email"
+                        id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="pass1" class="form-control" placeholder="Enter your password"
+                        id="exampleInputPassword1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Signin</button>
+                <a href="{% url 'signup' %}">Create a new account?</a>
+                <p class="mt-2"><a href="">Forgot password?</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

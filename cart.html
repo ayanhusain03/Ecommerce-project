@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-9 mt-3">
+            <div class="card">
+                <div class="card-header">
+                  Cart Details
+                </div>
+                {% for x in items %}
+                <div class="card-body">
+                  <h5 class="card-title">{{x.product.product_name}}</h5>
+                  <img src="{{x.product.image.url}}" alt="" style="height: 200px;">
+                  <p class="card-text fw-medium">Product price : {{x.product.price}}/-</p>
+                  <p class="card-text fw-medium">Quantity : &nbsp; &nbsp;
+
+                  <a href="/updateqty/0/{{x.product.id}}"><button class="btn btn-primary">-</button></a>
+                  <input type="text" value="{{x.quantity}}" size="4" readonly>
+                  <a href="/updateqty/1/{{x.product.id}}"><button class="btn btn-primary">+</button></a>
+                  <br><br>
+                  <a href="/remove_product/{{x.product.id}}" class="btn btn-primary" onclick="remove()">Remove</a>
+                  <a href="#" class="btn btn-primary">Buy</a>
+
+                </p>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-3 mt-3">
+          <h5 class="text-center">Total</h5>
+          <p class="text-primary fs-6"><strong>Total Items ({{total_product}})</strong></p>
+          <hr>
+          <p><strong>Total Amount : {{total}}/-</strong></p>
+
+          <a href={% url "viewOrder" %}><button class="btn btn-success">Place Order</button></a>
+        </div>
+    </div>
+</div>
+
+<script>
+  function remove(){
+    alert("Item removed from cart")
+  }
+</script>
+
+{% endblock content %}
+

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="{{data.image.url}}" alt="image not found" style="width:100%" class="m-3">
+        </div>
+        <div class="col-lg-8">
+            <div class="card m-3">
+                <div class="card-header">
+                  Product details
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{data.product_name}}</h5>
+                  <p class="card-text">{{data.desc}}</p>
+
+                  <p class="card-text fw-bold">Price - <del>{{data.price|add:data.price}}/-</del>  <span class="card-text text-success fw-medium">50% Off</span></p>
+                 
+                  
+                  <p class="card-text fw-bold">Price - {{data.price}}/-</p>
+
+                  <p class="card-text fw-medium">Delivery in 3 Days</p>
+                  <p class="card-text ">10 Days return policy</p>
+                  <ul>
+                    <li>Bank Offer5% Cashback on Shopkart Axis Bank Card T&C</li>
+                    <li>Combo OfferBuy 2 items save 5%; Buy 3 or more save 7%See all productsT&C</li>
+                    <li>Special PriceGet extra 16% off (price inclusive of cashback/coupon)T&C</li>
+                    <li>Partner OfferSign-up for Flipkart Pay Later & get free Times Prime Benefits worth ₹10,000*</li>
+                  </ul>
+
+                  <a href="/addCart/{{data.id}}" class="btn btn-primary" onclick="myFunction()">ADD TO CART</a>
+                  <a href="{% url "index" %}" class="btn btn-primary">BACK</a>
+
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  function myFunction(){
+    alert("Item added successfully")
+  }
+</script>
+{% endblock content %}

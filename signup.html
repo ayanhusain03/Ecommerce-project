@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}ShopKart-SignUp{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="bg-body-tertiary w-50 mx-auto p-3 shadow mt-3 rounded-3">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="" class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="fname" placeholder="First name" aria-label="First name" required>
+                    </div>
+                    <div class="col">
+                        <label for="" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lname" placeholder="Last name" aria-label="Last name" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email address" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="pass1" placeholder="Create password" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" name="pass2" placeholder="Confirm password" id="exampleInputPassword2" required>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                    <label class="form-check-label" for="exampleCheck1">I agree to terms and conditions</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url "signin" %}">Already have an account?</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}ShopKart{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- start column 1 -->
+        <div class="col-lg-2 bg-body-tertiary">
+            <div class="row">
+                <h5>Categories</h5>
+                <ul class="ms-4" type="none">
+                    {% for i in sub %}
+                    <a href="/subcategories/{{i.name}}" class="nav-link">
+                        <li class="fw-medium">{{i.name|capfirst}}</li>
+                    </a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="row">
+                <h5>Filters</h5>
+                <div class="justify-content-center d-flex mt-3">
+                    <form action="">
+                        <label for="">Min</label>
+                        <input type="number" placeholder="Min price" name="min">
+                        <br><br>
+                        <label for="">Max</label>
+                        <input type="number" placeholder="Max price" name="max">
+                        <br><br>
+                        <input type="submit" value="Search" class="btn btn-warning">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <h5>Sort</h5>
+                <div class="mt-3 text-center">
+                    <a href="" class="nav-link" style="font-weight: 500;">High to Low</a>
+                    <br>
+                    <a href="" class="nav-link" style="font-weight: 500;">Low to High</a>
+                </div>
+            </div>
+        </div>
+        <!-- end column 1 -->
+
+        <!-- start column 2 -->
+        <div class="col-lg-10">
+            <div class="row justify-content-around">
+                <!-- Start Card -->
+                {% for i in data %}
+                <div class="card mt-3 p-0 shadow" style="width: 18rem;">
+                    <img src="{{i.image.url}}" class="card-img-top" alt="..." height="300px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.product_name|truncatewords:10}}</h5>
+                        {% comment %} <p class="card-text">{{i.desc}}</p> {% endcomment %}
+                        <p><strong>Price : {{i.price}}/-</strong></p>
+                        <p style="color: green; font-weight: 500;">50% off</p>
+                        <a href="/product_details/{{i.id}}" class="btn btn-primary ">View product</a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- end card -->
+            </div>
+        </div>
+        <!-- end column 2 -->
+    </div>
+</div>
+{% endblock content %}

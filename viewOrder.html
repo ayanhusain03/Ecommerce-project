@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-9 mt-4">
+            <h3 class="bg-warning p-2 shadow">Customer Details</h3>
+            {% if user.is_authenticated %}
+            <p>Name : {{user.first_name|capfirst}} {{user.last_name|capfirst}}</p>
+            <p>Mobile : 7744112255</p>
+            <p>Email : {{user.username}}</p>
+            <p>Address : Borivali</p>
+            {% endif %}
+
+            <h3 class="bg-warning p-2 shadow">Cart Details</h3>
+            {% for x in items %}
+            <div class="row">
+                <div class="col-lg-3 text-end">
+                    <img src="{{x.product.image.url}}" alt="" width="100%" height="250px">
+                </div>
+                <div class="col-lg-9">
+                    <p>Product Name : {{x.product.product_name}}</p>
+                    <p>Product Price : {{x.product.price}}</p>
+                    <p>Product Quantity : {{x.quantity}}</p>
+                    <p>Delivered by : Within 5 days</p>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+        <div class="col-lg-3 mt-4 shadow">
+            <h3 class="bg-success p-2">Payment Details</h3>
+            <p>Total items ({{total_product}})</p>
+            <hr>
+            <p>Total Amount : {{total}}/-</p>
+            <a href="{% url 'payment' %}"><button class="btn btn-success">Make Payment</button></a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
